@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    
+    //Creates message and how many letters to shift
+    int letterShift = 8;
+    char message[] = "Hello my name is Jorge. I made the Mimic. It was difficult to put the pieces together...";
+    int lengthOfMessage = strlen(message);
+
+    //Prints to console
+    printf("The original message is: %s\n", message);
+    printf("The encrypted message is: ");
+
+    //Iterate for as long as i is longer than the length of the message
+    for (int i=0; i < lengthOfMessage; i++) {
+
+        //Accoutns for uppercase
+        if (isupper(message[i])) {
+            printf("%c", (message[i] - 65 + letterShift) % 26 + 65);
+        }
+
+        //Accounts for lowercase
+        else if (islower(message[i])) {
+            printf("%c", (message[i] - 97 + letterShift) % 26 + 97);
+        }
+
+        //No changes are made for spaces or special cases
+        else {
+            printf("%c", message[i]);
+        }
+    }
+
+    //Spaces for clean output on console
+    printf("\n\n");
+
+    return 0;
+}
